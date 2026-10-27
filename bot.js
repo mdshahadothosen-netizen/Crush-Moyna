@@ -57,7 +57,7 @@ function getReply(message) {
     text.includes("হাই") ||
     text.includes("hello") ||
     text.includes("হ্যালো") ||
-    text.includes("")
+  
   ) {
     return `এইইই বাবুইই 🥰🎀 কেমন আছো গো? তোমার ${botName} কিন্তু এখানেই আছে! 💗`;
   }
