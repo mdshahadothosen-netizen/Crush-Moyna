@@ -57,7 +57,7 @@ function getReply(message) {
     text.includes("হাই") ||
     text.includes("hello") ||
     text.includes("হ্যালো") ||
-    text.includes("আসসালামু")
+    text.includes("")
   ) {
     return `এইইই বাবুইই 🥰🎀 কেমন আছো গো? তোমার ${botName} কিন্তু এখানেই আছে! 💗`;
   }
@@ -86,7 +86,23 @@ function getReply(message) {
   if (text.includes("গালি") || text.includes("pagli")) {
     return "এইইই দুষ্টু! 😤💅 আমার সাথে ভালো করে কথা বলো, নইলে অভিমান করব! 🥹💗";
   }
+  if (
+    text.includes("আসসালামু আলাইকুম") ||
+    text.includes("salam")
+  ) {
+    return "ওয়ালাইকুমুস সালাম 🥰💗 — তোমাদের ময়না 🎀";
+  }
 
+  if (text.includes("/time") || text.includes("কয়টা বাজে")) {
+    const time = new Intl.DateTimeFormat("bn-BD", {
+      timeZone: "Asia/Dhaka",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true
+    }).format(new Date());
+
+    return `এখন বাংলাদেশ সময় ${time} 🕒💗`;
+  }
   return null;
 }
 
