@@ -1,0 +1,10 @@
+
+{
+  "name": "crush-moyna",
+  "version": "1.0.0",
+  "description": "Bangla fun chatbot reply engine",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  }
+}
