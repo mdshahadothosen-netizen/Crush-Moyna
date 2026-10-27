@@ -104,5 +104,53 @@ function getReply(message) {
   }
   return null;
 }
+async function getAIReply(message) {
+  const apiKey = process.env.GROQ_API_KEY;
 
+  if (!apiKey) {
+    return "বাবুই 🥹💗 আমার AI এখনো সেটআপ করা হয়নি!";
+  }
+
+  try {
+    const response = await fetch(
+      "https://api.groq.com/openai/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            {
+              role: "system",
+              content: "তুমি ময়না, Crush-Moyna নামের মিষ্টি, মজার বাংলা AI বন্ধু। স্বাভাবিক বাংলায় উত্তর দাও, বন্ধুসুলভ থাকো এবং প্রয়োজনে ইমোজি ব্যবহার করো।"
+            },
+            {
+              role: "user",
+              content: message
+            }
+          ],
+          temperature: 0.8,
+          max_tokens: 300
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error("Groq API error:", data);
+      return "উফফ বাবুই 🥹💗 একটু সমস্যা হচ্ছে, পরে আবার বলো!";
+    }
+
+    return data.choices?.[0]?.message?.content
+      || "বাবুই, কী বললে আরেকবার বলো তো! 💗";
+
+  } catch (error) {
+    console.error("AI error:", error.message);
+    return "ইশশ 🥹💗 আমার কানেকশনে সমস্যা হচ্ছে!";
+  }
+}
 module.exports = { getReply, PREFIX, botName, owner };
