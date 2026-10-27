@@ -153,4 +153,20 @@ async function getAIReply(message) {
     return "ইশশ 🥹💗 আমার কানেকশনে সমস্যা হচ্ছে!";
   }
 }
-module.exports = { getReply, getAIReply, PREFIX, botName, owner };
+async function getSmartReply(message) {
+  const oldReply = getReply(message);
+
+  if (oldReply !== null) {
+    return oldReply;
+  }
+
+  return await getAIReply(message);
+}
+module.exports = {
+  getReply,
+  getAIReply,
+  getSmartReply,
+  PREFIX,
+  botName,
+  owner
+};
