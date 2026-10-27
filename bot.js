@@ -153,4 +153,4 @@ async function getAIReply(message) {
     return "ইশশ 🥹💗 আমার কানেকশনে সমস্যা হচ্ছে!";
   }
 }
-module.exports = { getReply, PREFIX, botName, owner };
+module.exports = { getReply, getAIReply, PREFIX, botName, owner };
