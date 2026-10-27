@@ -1,5 +1,5 @@
 
-const { getReply } = require("./bot.js");
+const { getSmartReply } = require("./bot.js");
 
 const tests = [
   "!help",
@@ -14,11 +14,12 @@ const tests = [
   "আসসালামু আলাইকুম"
 ];
 
-for (const message of tests) {
-  console.log("তুমি:", message);
-  console.log(
-    "ময়না:",
-    getReply(message) ?? "এটার উত্তর এখনো শেখানো হয়নি 💗"
-  );
-  console.log("--------------------");
+async function main() {
+  for (const message of tests) {
+    console.log("তুমি:", message);
+    console.log("ময়না:", await getSmartReply(message));
+    console.log("--------------------");
+  }
 }
+
+main().catch(console.error);
