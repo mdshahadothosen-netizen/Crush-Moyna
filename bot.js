@@ -92,7 +92,7 @@ function getReply(message) {
     return "ওয়ালাইকুমুস সালাম 🥰💗 — তোমাদের ময়না 🎀";
   }
 
-  if (text === `${PREFIX}time` || text.includes("কয়টা বাজে")) {
+  if (text.includes("!time") || text.includes("কয়টা বাজে")) {
     const time = new Intl.DateTimeFormat("bn-BD", {
       timeZone: "Asia/Dhaka",
       hour: "numeric",
